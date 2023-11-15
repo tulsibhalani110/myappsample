@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('run backend') {
             steps {
-                echo 'Building the projects application ...'
+                echo 'execute gradle ...'
                 // Add your build commands here
             }
         }
