@@ -1,35 +1,58 @@
 pipeline {
     agent any
-    
+
+    environment {
+        DOCKER_IMAGE_NAME = 'meet'
+        REGISTRY_CREDENTIALS = 'global'
+        SHOULD_DEPLOY = true
+    }
+
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                // Your build steps go here
-                echo 'Building...'
+                checkout scm
             }
         }
-        
-        stage('Test') {
+
+        stage('Build Docker Image') {
             steps {
-                // Your test steps go here
-                echo 'Testing...'
+                script {
+                    docker.build(env.meet)
+                }
             }
         }
-        
+
+        stage('Push Docker Image') {
+            when {
+                expression { env.SHOULD_DEPLOY == true }
+            }
+            steps {
+                script {
+                    docker.withRegistry('https://your-docker-registry', env.REGISTRY_CREDENTIALS) {
+                        docker.image(env.meet).push()
+                    }
+                }
+            }
+        }
+
         stage('Deploy') {
+            when {
+                expression { env.SHOULD_DEPLOY == true }
+            }
             steps {
-                // Your deployment steps go here
-                echo 'Deploying...'
+                // Add deployment steps here
+                // For example, deploying to a Kubernetes cluster, etc.
             }
         }
     }
-    
+
     post {
-        success {
-            echo 'Pipeline succeeded! Do something here...'
-        }
-        failure {
-            echo 'Pipeline failed! Do something else here...'
+        always {
+            // Clean up (e.g., remove Docker containers, images, etc.)
+            script {
+                docker.image(env.meet)
+            }
         }
     }
 }
+
