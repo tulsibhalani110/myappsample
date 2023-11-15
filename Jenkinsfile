@@ -1,44 +1,35 @@
 pipeline {
     agent any
-
+    
     stages {
-        stage('Checkout') {
-            steps {
-                // Checkout your source code from version control (e.g., Git)
-                git 'https://github.com/tulsibhalani110/myappsample.git'
-            }
-        }
-
         stage('Build') {
             steps {
-                // Use Gradle to build your project
-                sh './gradlew build'
+                // Your build steps go here
+                echo 'Building...'
             }
         }
-
+        
         stage('Test') {
             steps {
-                // Run tests using Gradle
-                sh './gradlew test'
+                // Your test steps go here
+                echo 'Testing...'
             }
         }
-
+        
         stage('Deploy') {
             steps {
-                // Perform deployment tasks
-                // This could involve copying artifacts, updating servers, etc.
+                // Your deployment steps go here
+                echo 'Deploying...'
             }
         }
     }
-
+    
     post {
         success {
-            // Actions to take when the build is successful
-            echo 'Build successful! Deploying...'
+            echo 'Pipeline succeeded! Do something here...'
         }
         failure {
-            // Actions to take when the build fails
-            echo 'Build failed! Not deploying.'
+            echo 'Pipeline failed! Do something else here...'
         }
     }
 }
