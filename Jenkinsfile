@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Set the Docker image name and tag
-        DOCKER_IMAGE_NAME = 'your-image-name'
+        DOCKER_IMAGE_NAME = 'hoo'
         DOCKER_IMAGE_TAG = 'latest'
     }
 
@@ -19,7 +19,7 @@ pipeline {
             steps {
                 // Use the Docker plugin to build the Docker image
                 script {
-                    docker.build("${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}")
+                    docker.build("${hoo}:${latest}")
                 }
             }
         }
