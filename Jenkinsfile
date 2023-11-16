@@ -3,19 +3,23 @@ pipeline {
 
     environment {
         // Set the Docker image name and tag
-        DOCKER_IMAGE_NAME = 'ho'
+        DOCKER_IMAGE_NAME = 'your-image-name'
         DOCKER_IMAGE_TAG = 'latest'
     }
 
     stages {
-        stage('Build Docker Image') {
+        stage('Checkout') {
             steps {
                 // Check out the source code from your version control system
-                checkout scm
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/tulsibhalani110/myappsample.git', credentialsId: 'your-credentials-id']]])
+            }
+        }
 
-                // Build the Docker image using the Dockerfile in the project root
+        stage('Build Docker Image') {
+            steps {
+                // Use the Docker plugin to build the Docker image
                 script {
-                    docker.image("${ho}:${latest}").build()
+                    docker.build("${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}")
                 }
             }
         }
@@ -30,6 +34,3 @@ pipeline {
         }
     }
 }
-
-         
-     
