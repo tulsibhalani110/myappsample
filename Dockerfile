@@ -1,23 +1,13 @@
-pipeline {
-    agent any
-    
-    stages {
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    // Build the Docker image using the Dockerfile
-                    docker.build('your-image-name:latest')
-                }
-            }
-        }
-    }
-    
-    post {
-        success {
-            echo 'Build successful! You can now deploy your Docker image.'
-        }
-        failure {
-            echo 'Build failed. Check the logs for errors.'
-        }
-    }
-}
+# Use a minimal base image
+FROM nginx:latest
+
+# Set the working directory in the container
+WORKDIR /usr/share/nginx/html
+
+# Copy the content of your website to the working directory
+COPY . .
+
+# Expose the port your app runs on
+EXPOSE 80
+
+# Command to run your application
