@@ -6,7 +6,7 @@
         stage('Checkout') {
             steps {
                 // Checkout the code from GitHub
-                git 'https://github.com/your-username/your-repo.git'
+                git ''
             }
         }
 
@@ -14,20 +14,10 @@
             steps {
                 // Build the Docker image
                 script {
-                    def dockerImage = docker.build('your-docker-image-name:latest', '.')
+                    def dockerImage = docker.build('doo:latest', '.')
                 }
             }
         }
 
-        stage('Push Docker Image') {
-            steps {
-                // Push the Docker image to a registry (optional)
-                script {
-                    docker.withRegistry('https://your-docker-registry', 'docker-registry-credentials-id') {
-                        dockerImage.push()
-                    }
-                }
-            }
         }
     }
-}
