@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Set the Docker image name and tag
-        DOCKER_IMAGE_NAME = 'your-image-name'
+        DOCKER_IMAGE_NAME = 'ho'
         DOCKER_IMAGE_TAG = 'latest'
     }
 
@@ -17,20 +17,9 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                // Use the Docker plugin to build the Docker image
                 script {
-                    docker.build("${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}")
-                }
-            }
-        }
-
-        stage('Push Docker Image') {
-            steps {
-                // Use the Docker plugin to push the Docker image to a registry
-                script {
-                    docker.withRegistry('https://your-docker-registry', 'your-registry-credentials-id') {
-                        docker.image("${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}").push()
-                    }
+                    // Build the Docker image using the Dockerfile in the project root
+                    docker.image("${ho}:${latest}").build()
                 }
             }
         }
@@ -45,6 +34,3 @@ pipeline {
         }
     }
 }
-
-
-
