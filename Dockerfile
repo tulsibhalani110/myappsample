@@ -11,4 +11,4 @@ COPY target/your-application.jar ./
 EXPOSE 81
 
 # Define the command to run your Java application
-CMD ["java", "-jar", "your-application.jar"]
+
