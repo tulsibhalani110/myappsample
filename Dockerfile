@@ -1,20 +1,23 @@
-# Use an official base image (e.g., a specific version of Node.js)
-FROM node:14
-
-# Set the working directory in the container
-WORKDIR /app
-
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
-
-# Install dependencies
-RUN npm install
-
-# Copy the application source code to the working directory
-COPY . .
-
-# Expose a port (if your application listens on a specific port)
-EXPOSE 3000
-
-# Define the command to run your application
-CMD ["npm", "start"]
+pipeline {
+    agent any
+    
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build the Docker image using the Dockerfile
+                    docker.build('your-image-name:latest')
+                }
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo 'Build successful! You can now deploy your Docker image.'
+        }
+        failure {
+            echo 'Build failed. Check the logs for errors.'
+        }
+    }
+}
