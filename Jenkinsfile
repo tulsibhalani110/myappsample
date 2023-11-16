@@ -1,11 +1,10 @@
 pipeline {
     agent any
-        stage('Build Docker Image') {
+    stages {
+        stage('Build') {
             steps {
-                // Build the Docker image
-                script {
-                    def dockerImage = docker.build('imaged:latest', '.')
-                }
+                sh 'docker build -t my-image .'
             }
         }
+    }
 }
