@@ -1,13 +1,9 @@
 pipeline {
-    agent {
-        docker {
-            image 'https://github.com/tulsibhalani110/myappsample.git'
-        }
-    }
+    agent 
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B'
+                
             }
         }
     }
