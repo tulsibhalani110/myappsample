@@ -6,6 +6,7 @@ tools{
 stages{
 stage('Build docker')
    steps{
+       sh'docker clean install'
         }
 }
 }
