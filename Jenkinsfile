@@ -1,10 +1,12 @@
-pipeline {
+ppipeline {
     agent any 
     stages {
         stage('Build Docker') {
             steps {
                 script {
-                     sh 'docker build -t your-image-name:latest .'
+                    docker.image('ho').inside {
+                        docker.build('ho:latest', '-f Dockerfile.build .')
+                    }
                 }
             }
         }
@@ -19,3 +21,4 @@ pipeline {
         }
     }
 }
+
