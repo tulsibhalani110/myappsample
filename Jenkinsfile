@@ -5,8 +5,7 @@ pipeline {
         stage('Build Docker') {
             steps {
                 script {
-                    docker.image('ho').inside {
-                        docker.build('ho:latest', '-f Dockerfile.build .')
+                        docker.build('-f Dockerfile.build .')
                     }
                 }
             }
@@ -21,4 +20,4 @@ pipeline {
             echo 'Build failed. Check the logs for errors.'
         }
     }
-}
+
