@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     docker.image('ho').inside {
-                        docker.build('ho:latest', '-f Dockerfile.build .')
+                        docker.build('ho:latest', '-t Dockerfile.build .')
                     }
                 }
             }
