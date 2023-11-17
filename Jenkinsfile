@@ -1,36 +1,14 @@
 pipeline {
-    agent any
-
-    environment {
-        // Set the Docker image name and tag
-        DOCKER_IMAGE_NAME = 'hoo'
-        DOCKER_IMAGE_TAG = 'latest'
+    agent {
+        docker {
+            image 'maven:3.9.3-eclipse-temurin-17'
+        }
     }
-
     stages {
-        stage('Checkout') {
+        stage('Build') {
             steps {
-                // Check out the source code from your version control system
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/tulsibhalani110/myappsample.git', credentialsId: 'your-credentials-id']]])
+                sh 'mvn -B'
             }
-        }
-
-        stage('Build Docker Image') {
-            steps {
-                // Use the Docker plugin to build the Docker image
-                script {
-                    docker.build("${hoo}:${latest}")
-                }
-            }
-        }
-    }
-
-    post {
-        success {
-            echo 'Build successful! You can now deploy your Docker image.'
-        }
-        failure {
-            echo 'Build failed. Check the logs for errors.'
         }
     }
 }
