@@ -2,18 +2,11 @@ pipeline {
     agent any
     
     stages {
-        stage('Build Docker Image') {
+        stage('Build Docker') {
             steps {
                 script {
-                    // Use the official Maven image to build your Java application
+                  checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/tulsibhalani110/wow.git']])
                     docker.image('ho').inside {
-                        // Copy the source code to the working directory inside the Maven container
-                        checkout scm
-
-                        // Build the Java application with Maven
-                        sh 'Docker clean package'
-
-                        // Build the Docker image using the custom Dockerfile
                         docker.build('ho:latest', '-f Dockerfile.build .')
                     }
                 }
@@ -30,4 +23,3 @@ pipeline {
         }
     }
 }
-
