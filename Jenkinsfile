@@ -1,12 +1,10 @@
 ppipeline {
     agent any 
     stages {
-        stage('Build Docker') {
+        stage('Build Docker Image') {
             steps {
                 script {
-                    docker.image('ho').inside {
-                        docker.build('ho:latest', '-f Dockerfile.build .')
-                    }
+                    sh 'docker build -t your-image-name:latest .'
                 }
             }
         }
