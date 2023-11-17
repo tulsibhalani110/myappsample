@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'maven:3.9.3-eclipse-temurin-17'
+            image 'https://github.com/tulsibhalani110/myappsample.git'
         }
     }
     stages {
