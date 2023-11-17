@@ -1,14 +1,13 @@
-# Use an official OpenJDK base image
-FROM openjdk:11
+# Use a minimal base image
+FROM nginx:latest
 
-# Set the working directory inside the container
-WORKDIR /usr/src/app
+# Set the working directory in the container
+WORKDIR /usr/share/nginx/html
 
-# Copy the application JAR file to the working directory
-COPY target/your-application.jar ./
+# Copy the content of your website to the working directory
+COPY . .
 
-# Expose the port that the application will run on (if needed)
-EXPOSE 81
+# Expose the port your app runs on
+EXPOSE 80
 
-# Define the command to run your Java application
-
+# Command to run your application
