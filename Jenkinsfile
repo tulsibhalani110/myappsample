@@ -4,9 +4,7 @@ pipeline {
         stage('Build Docker') {
             steps {
                 script {
-                    docker.image('ho').inside {
-                       sh "docker build -t ${ho}:${latest} ."
-                    }
+                     sh 'docker build -t your-image-name:latest .'
                 }
             }
         }
