@@ -1,15 +1,24 @@
 pipeline {
     agent any
-    environment {
-        DOCKER_IMAGE_NAME = 'ho:latest'
-    }
+    
     stages {
-        stage('Build Docker Image') {
+        stage('Build Docker') {
             steps {
                 script {
-                    sh 'docker build -t ${ho} .'
+                    docker.image('ho').inside {
+                        docker.build('ho:latest', '-f Dockerfile.build .')
+                    }
                 }
             }
+        }
+    }
+    
+    post {
+        success {
+            echo 'Build successful! You can now deploy your Docker image.'
+        }
+        failure {
+            echo 'Build failed. Check the logs for errors.'
         }
     }
 }
