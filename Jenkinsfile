@@ -1,32 +1,17 @@
 pipeline {
-    agent {
-        docker {
-            image 'docker:latest'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    }
-
-    environment {
-        DOCKER_IMAGE_NAME = 'ho'
-        DOCKER_IMAGE_TAG = 'latest'
-    }
-
+    agent any 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-        stage('Build Docker Image') {
+        stage('Build Docker') {
             steps {
                 script {
-                    // Build the Docker image using the Dockerfile in the project root
-                    sh "docker build -t ${ho}:${latest} ."
+                    docker.image('ho').inside {
+                       sh "docker build -t ${ho}:${latest} ."
+                    }
                 }
             }
         }
     }
-
+    
     post {
         success {
             echo 'Build successful! You can now deploy your Docker image.'
