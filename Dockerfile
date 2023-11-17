@@ -1,13 +1,13 @@
-FROM node:14
+# Use a minimal base image
+FROM nginx:latest
 
-WORKDIR /app
+# Set the working directory in the container
+WORKDIR /usr/share/nginx/html
 
-COPY package*.json ./
-
-RUN npm install
-
+# Copy the content of your website to the working directory
 COPY . .
 
-EXPOSE 3000
+# Expose the port your app runs on
+EXPOSE 80
 
-CMD ["npm", "start"]
+# Command to run your application
