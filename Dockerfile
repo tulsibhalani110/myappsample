@@ -1,9 +1,13 @@
+# Use a minimal base image
+FROM nginx:latest
 
-FROM node:14
+# Set the working directory in the container
 WORKDIR /usr/share/nginx/html
 
+# Copy the content of your website to the working directory
 COPY . .
 
-EXPOSE 84
+# Expose the port your app runs on
+EXPOSE 80
 
-CMD ["npm", "start"]
+
