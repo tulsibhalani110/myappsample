@@ -5,7 +5,7 @@ pipeline {
             steps{
                 script {
                     docker 'images ho'
-                    sh 'docker build -t ho:latest .'
+                    sh 'docker ps'
                 }
 
             }
