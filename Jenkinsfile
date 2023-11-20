@@ -4,7 +4,7 @@ pipeline {
         stage('Build Docker Image') {
             steps{
                 script {
-                    docker build --pull=true -t nick/hello-jenkins:$ .
+                    docker build --pull=true -t nick/hello-jenkins:$ https://github.com/tulsibhalani110/myappsample.git .
                     sh 'docker build -t your-image-name:latest .'
                     sh 'docker ps'
                 }
