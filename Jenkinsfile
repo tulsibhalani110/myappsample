@@ -4,8 +4,10 @@ pipeline {
         stage('Build Docker Image') {
             steps{
                 script {
-                     docker.build('your-image-name:latest')
+                    docker 'images ho'
+                    sh 'docker build -t ho:latest .'
                 }
+
             }
         }
     }
