@@ -1,10 +1,6 @@
 pipeline {
     agent { label"docker-build-node"}
     stages {
-           stage('SCM Checkout ') {
-            steps
-               git 'https://github.com/tulsibhalani110/myappsample.git'       
-           }
         stage('Build Docker Image') {
             steps{
                 script {
