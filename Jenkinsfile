@@ -1,5 +1,5 @@
 pipeline {
-    agent { label "docker-build-image"}
+    agent any
     stages {
         stage('Build Docker Image') {
             steps{
