@@ -11,7 +11,6 @@ pipeline {
             }
         }
     }
-
     post {
         success {
             // Clean up resources or notify on success
