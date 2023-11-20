@@ -5,8 +5,6 @@ pipeline {
             steps{
                 script {
                     sh 'docker ps'
-                    sh docker.build('ho:latest', '-f Dockerfile.build .')
-
                 }
 
             }
