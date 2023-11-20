@@ -1,14 +1,10 @@
 pipeline {
     agent { label"docker-build-node"}
     stages {
-           stage('Checkout Code') {
-            steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: 'https://github.com/example/repo.git']]])
-                script {
-                    echo 'Code successfully checked out!'
-                }
-            }
-        }
+           stage('SCM Checkout ') {
+            steps
+               git 'https://github.com/tulsibhalani110/myappsample.git'       
+           }
         stage('Build Docker Image') {
             steps{
                 script {
