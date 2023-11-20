@@ -4,7 +4,7 @@ pipeline {
         stage('Build Docker Image') {
             steps{
                 script {
-                    dockerImage = docker.build('mo', '-f Dockerfile .')
+                     docker.build('your-image-name:latest')
                 }
             }
         }
