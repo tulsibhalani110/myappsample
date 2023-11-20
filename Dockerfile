@@ -1,5 +1,5 @@
 # Use a minimal base image
-FROM nginx:latest
+FROM jenkins:latest
 
 # Set the working directory in the container
 WORKDIR /usr/share/nginx/html
