@@ -1,25 +1,26 @@
 pipeline {
     agent any
-    
+
     stages {
-        stage('Build Docker') {
+        stage('Build Docker Image') {
             steps {
+                // Build the Docker image
                 script {
-                    docker.image('ho').inside {
-                        docker.build('ho:latest', '-t Dockerfile.build .')
-                    }
+                    dockerImage = docker.build('your-docker-image-name:latest', '-f Dockerfile .')
                 }
             }
         }
     }
-    
+
     post {
         success {
-            echo 'Build successful! You can now deploy your Docker image.'
+            // Clean up resources or notify on success
+            echo 'Docker build successful!'
         }
+
         failure {
-            echo 'Build failed. Check the logs for errors.'
+            // Clean up or notify on failure
+            echo 'Docker build failed!'
         }
     }
 }
-
