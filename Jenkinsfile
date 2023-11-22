@@ -1,25 +1,24 @@
 
 pipeline {
     agent any
-
     stages {
-        stage('Build') {
-            steps {
-                git 'https://github.com/tulsibhalani110/myappsample.git'
+        stage('Build Docker Image') {
+            steps{
                 script {
-                    docker.build('your-image-name')
+                    sh 'docker build -t ${ho} .'
+
                 }
+
             }
         }
     }
-
     post {
         success {
-            echo 'Pipeline succeeded!'
+            echo 'Docker build successful!'
         }
 
         failure {
-            echo 'Pipeline failed :('failue')
+            echo 'Docker build failed!'
         }
     }
 }
