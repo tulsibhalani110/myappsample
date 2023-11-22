@@ -4,7 +4,7 @@ pipeline {
         stage('Build Docker Image') {
             steps{
                 script {
-                  git credentialsID 'https://github.com/tulsibhalani110/myappsample.git'
+                  git credentialsId 'https://github.com/tulsibhalani110/myappsample.git'
                     docker.build('your-image-name')
                 }
 
