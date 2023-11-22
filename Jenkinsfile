@@ -7,7 +7,6 @@ pipeline {
                   git 'https://github.com/tulsibhalani110/myappsample.git'
                     docker.build('your-image-name')
                 }
-
             }
         }
     }
