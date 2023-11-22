@@ -5,6 +5,7 @@ pipeline {
         stage('Build Docker Image') {
             steps{
                 script {
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/tulsibhalani110/myappsample'
                   git 'https://github.com/tulsibhalani110/myappsample.git'
                     docker.build('your-image-name')
 
