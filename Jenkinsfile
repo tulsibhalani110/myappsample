@@ -1,24 +1,16 @@
 pipeline {
     agent any
     stages {
-        stage('Build Docker Image') {
-            steps{
-                script {
-                  git 'https://github.com/tulsibhalani110/myappsample.git'
-                    docker.build('your-image-name')
+        stage('Build') {
+            agent {
+                docker {
+                    image 'gradle:8.2.0-jdk17-alpine'
+                    reuseNode true
                 }
-
+            }
+            steps {
+                sh 'gradle --version'
             }
         }
     }
-    post {
-        success {
-            echo 'Docker build successful!'
-        }
-
-        failure {
-            echo 'Docker build failed!'
-        }
-    }
 }
-
