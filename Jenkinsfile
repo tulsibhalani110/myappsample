@@ -4,7 +4,8 @@ pipeline {
         stage('Build Docker Image') {
             steps{
                 script {
-                    sh 'docker ps'
+                    sh 'docker build -t ${ho} .'
+
                 }
 
             }
