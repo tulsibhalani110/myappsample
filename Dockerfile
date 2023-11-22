@@ -1,3 +1,8 @@
-FROM node:20.9.0-alpine3.18
 
-RUN apk add -U subversion
+FROM nginx:latest
+
+
+COPY index.html /usr/share/nginx/html/
+
+COPY ..
+EXPOSE 84
