@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                git 'https://github.com/your-username/your-repository.git'
+                git 'https://github.com/tulsibhalani110/myappsample.git'
                 script {
                     docker.build('your-image-name')
                 }
