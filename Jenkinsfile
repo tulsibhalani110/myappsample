@@ -4,7 +4,7 @@ pipeline {
         stage('Build Docker Image') {
             steps{
                 script {
-                 docker 'ps'
+                 docker ps
                 }
             }
         }
