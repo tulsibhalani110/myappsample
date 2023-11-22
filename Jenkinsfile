@@ -8,7 +8,6 @@ pipeline {
                     sh 'docker build -t ${ho} .'
 
                 }
-
             }
         }
     }
