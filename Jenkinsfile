@@ -4,8 +4,7 @@ pipeline {
         stage('Build Docker Image') {
             steps{
                 script {
-                  git 'https://github.com/tulsibhalani110/myappsample.git'
-                    docker.build('your-image-name')
+                 docker 'ps'
                 }
             }
         }
