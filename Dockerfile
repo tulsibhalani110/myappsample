@@ -1,6 +1,8 @@
 
 FROM nginx:latest
-WORKDIR add/
-ADD  pilelinedevops-automation.jar
-COPY . .
+
+
+COPY index.html /usr/share/nginx/html/
+
+COPY ..
 EXPOSE 84
