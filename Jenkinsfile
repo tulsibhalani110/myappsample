@@ -10,7 +10,7 @@ pipeline {
             }
         }
     }
-    
+
     post {
         success {
             echo 'Docker build successful!'
