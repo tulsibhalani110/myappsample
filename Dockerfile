@@ -1,7 +1,5 @@
 
 FROM nginx:latest
 
-
-WORKDIR var/lib/jenkins
-COPY index.html /usr/share/nginx/html/
+COPY index.html /usr/share/nginx/html/   var/lib/jenkins
 EXPOSE 84
