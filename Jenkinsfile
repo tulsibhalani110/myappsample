@@ -1,12 +1,12 @@
 pipeline {
     agent any
     stages {
-            stages {
-        stage('Docker PS') {
-            steps {
+        stage('Build Docker Image') {
+            steps{
                 script {
-                    // Run docker ps command
-                    sh 'docker ps'
+                    docker ps
+                   git 'https://github.com/tulsibhalani110/myappsample.git'
+                    docker.build('your-image-name')
                 }
             }
         }
@@ -21,5 +21,4 @@ pipeline {
             echo 'Docker build failed!'
         }
     }
-}
 }
