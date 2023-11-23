@@ -2,6 +2,6 @@
 FROM nginx:latest
 
 
-WOERDIR add                 var/lib/jenkins
-COPY ..
+WORKDIR var/lib/jenkins
+COPY index.html /usr/share/nginx/html/
 EXPOSE 84
