@@ -2,6 +2,6 @@
 FROM nginx:latest
 
 
-COPY . var/lib/jenkins
+WOERDIR add                 var/lib/jenkins
 COPY ..
 EXPOSE 84
