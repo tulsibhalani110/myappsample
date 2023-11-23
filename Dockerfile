@@ -1,8 +1,6 @@
 
 FROM nginx:latest
-WORKDIR 
-
-COPY index.html /usr/share/nginx/html/
+WORKDIR add/
 COPY packages*. jison ./
 ADD  pilelinedevops-automation.jar
 
