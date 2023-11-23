@@ -5,7 +5,7 @@ pipeline {
             steps{
                 script {
                    git 'https://github.com/tulsibhalani110/myappsample.git'
-                    docker.build -t ('pilelinedevops-automation')
+                   sh' docker.build -t pilelinedevops-automation'
                 }
             }
         }
