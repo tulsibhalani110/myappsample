@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools{
+       Docker' 24.0.6, build ed223bc' 
+    }
     stages {
         stage('Build Docker Image') {
             steps{
