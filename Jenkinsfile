@@ -5,7 +5,7 @@ pipeline {
             steps{
                 script {
                    git 'https://github.com/tulsibhalani110/myappsample.git'
-                   sh' dockern build -t pilelinedevops-automation .'
+                   sh' dockern build -t pilelinedevops-automation -f /var/lib/jenkins/workspace/pilelinedevops.'
                 }
             }
         }
