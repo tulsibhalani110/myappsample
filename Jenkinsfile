@@ -1,11 +1,12 @@
 pipeline {
     agent any
     stages {
-        stage('Build Docker Image') {
-            steps{
+            stages {
+        stage('Docker PS') {
+            steps {
                 script {
-                   git 'https://github.com/tulsibhalani110/myappsample.git'
-                    docker.build('your-image-name')
+                    // Run docker ps command
+                    sh 'docker ps'
                 }
             }
         }
