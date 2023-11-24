@@ -2,7 +2,7 @@
 FROM nginx:latest
 
 WORKDIR /var/lib/docker
-COPY . .
+COPY . /myappsample
 
 
 EXPOSE 50
