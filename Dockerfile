@@ -1,7 +1,7 @@
 
 FROM nginx:latest
 
-WORKDIR /var/lib/docker
+WORKDIR /myappsample
 COPY . index.html /myappsample/usr/share/nginx/html/
 
 
