@@ -1,5 +1,5 @@
 
-FROM docker:latest
+FROM nginx:latest
 COPY /var/lib/docker 
 
 
