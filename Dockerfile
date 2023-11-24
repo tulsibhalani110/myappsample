@@ -1,7 +1,7 @@
 
 FROM nginx:latest
 WORKDIR /var/lib/docker
-COPY /var/lib/jenkins 
+COPY . .
 
 
 EXPOSE 50
