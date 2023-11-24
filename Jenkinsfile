@@ -3,7 +3,6 @@ pipeline {
     stages {
         stage('Build Docker') {
             steps{
-                dir('/varlib/docker')
                 script {
                    git 'https://github.com/tulsibhalani110/myappsample.git'
                    docker.build('alpine')
