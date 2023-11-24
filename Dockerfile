@@ -1,7 +1,7 @@
 
 FROM nginx:latest
-
-COPY index.html /myappsample/usr/share/nginx/html/
+COPY /var/lib/docker 
+COPY . usr/share/nginx/html/
 
 
 EXPOSE 50
