@@ -1,22 +1,24 @@
-node {
-    stage('Build and Deploy Nginx') {
-        stage('Build') {
-            docker {
-                image 'nginx:latest'
-                stage('Build') {
-                    sh 'pwd'
-                    sh 'ls'
-                }
-            }
-        }
-        stage('Deploy') {
-            docker {
-                image 'nginx:latest'
-                stage('Deploy') {
-                    sh 'pwd'
-                    sh 'ls'
+pipeline {
+    agent any
+    stages {
+        stage('Build Docker') {
+            steps{
+                script {
+                   git 'https://github.com/tulsibhalani110/myappsample.git'
+                   docker.build('nginx')
                 }
             }
         }
     }
+
+    post {
+        success {
+            echo 'Docker build successful!'
+        }
+
+        failure {
+            echo 'Docker build failed!'
+        }
+    }
 }
+
